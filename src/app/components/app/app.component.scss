@@ -1,0 +1,30 @@
+.logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    height: 100vh;
+    gap: 1em;
+}
+
+.main-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 2em;
+}
+
+.main-container a:hover {
+    background-color: #0056b3;
+}
