@@ -1,14 +1,26 @@
-<div>
+<div style="padding-left: 10em; padding-top: 2em;">
     <h1>Listado de clientes: </h1>
 
     @if (clients && clients.length > 0) {
-        <ul>
-           @for (client of clients; track $index) {
-                <p> {{ client.name }} </p>
-                <p> {{ client.address }} </p>
-           }
-        </ul>
+    <table style="width: 100%; border-collapse: collapse; border: 1em;">
+        <thead>
+            <tr>
+                <th style="padding: 8px; text-align: left;">Nombre</th>
+                <th style="padding: 8px; text-align: left;">Dirección</th>
+                <th style="padding: 8px; text-align: left;">Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (client of clients; track $index) {
+            <tr>
+                <td style="padding: 8px;">{{ client.name }}</td>
+                <td style="padding: 8px;">{{ client.address }}</td>
+                <td style="padding: 8px;">{{ client.phone }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
     } @else {
-        <p>No clients found</p>
+    <p>No clients found</p>
     }
 </div>

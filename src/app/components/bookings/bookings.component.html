@@ -1,0 +1,30 @@
+<div style="padding-left: 10em; padding-top: 2em;">
+    <h1>Listado de reservas: </h1>
+
+    @if (bookings && bookings.length > 0) {
+        <table style="width: 100%; border-collapse: collapse; border: 1em;">
+            <thead>
+                <tr>
+                    <th style="padding: 8px; text-align: left;">Nombre</th>
+                    <th style="padding: 8px; text-align: left;">Dirección</th>
+                    <th style="padding: 8px; text-align: left;">Hotel</th>
+                    <th style="padding: 8px; text-align: left;">Cliente</th>
+                    <th style="padding: 8px; text-align: left;">Fecha de creación</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (booking of bookings; track $index) {
+                <tr>
+                    <td style="padding: 8px;">{{ booking.name }}</td>
+                    <td style="padding: 8px;">{{ booking.address }}</td>
+                    <td style="padding: 8px;">{{ booking?.hotel?.name }}</td>
+                    <td style="padding: 8px;">{{ booking?.client?.name }}</td>
+                    <td style="padding: 8px;">{{ booking.createdDate }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    } @else {
+        <p>No clients found</p>
+    }
+</div>

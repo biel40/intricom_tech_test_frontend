@@ -11,6 +11,7 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
+import { HotelBooking } from '../models/hotel-booking';
 import { hotelBookingControllerCreateBooking } from '../fn/hotel-bookings/hotel-booking-controller-create-booking';
 import { HotelBookingControllerCreateBooking$Params } from '../fn/hotel-bookings/hotel-booking-controller-create-booking';
 import { hotelBookingControllerGetAllBookings } from '../fn/hotel-bookings/hotel-booking-controller-get-all-bookings';
@@ -37,7 +38,7 @@ export class HotelBookingsService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  hotelBookingControllerGetAllBookings$Response(params?: HotelBookingControllerGetAllBookings$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  hotelBookingControllerGetAllBookings$Response(params?: HotelBookingControllerGetAllBookings$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<HotelBooking>>> {
     return hotelBookingControllerGetAllBookings(this.http, this.rootUrl, params, context);
   }
 
@@ -51,9 +52,9 @@ export class HotelBookingsService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  hotelBookingControllerGetAllBookings(params?: HotelBookingControllerGetAllBookings$Params, context?: HttpContext): Observable<void> {
+  hotelBookingControllerGetAllBookings(params?: HotelBookingControllerGetAllBookings$Params, context?: HttpContext): Observable<Array<HotelBooking>> {
     return this.hotelBookingControllerGetAllBookings$Response(params, context).pipe(
-      map((r: StrictHttpResponse<void>): void => r.body)
+      map((r: StrictHttpResponse<Array<HotelBooking>>): Array<HotelBooking> => r.body)
     );
   }
 

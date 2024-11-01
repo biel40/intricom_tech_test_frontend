@@ -8,21 +8,22 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { HotelBooking } from '../../models/hotel-booking';
 
 export interface HotelBookingControllerGetAllBookings$Params {
 }
 
-export function hotelBookingControllerGetAllBookings(http: HttpClient, rootUrl: string, params?: HotelBookingControllerGetAllBookings$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+export function hotelBookingControllerGetAllBookings(http: HttpClient, rootUrl: string, params?: HotelBookingControllerGetAllBookings$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<HotelBooking>>> {
   const rb = new RequestBuilder(rootUrl, hotelBookingControllerGetAllBookings.PATH, 'get');
   if (params) {
   }
 
   return http.request(
-    rb.build({ responseType: 'text', accept: '*/*', context })
+    rb.build({ responseType: 'json', accept: 'application/json', context })
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      return r as StrictHttpResponse<Array<HotelBooking>>;
     })
   );
 }
