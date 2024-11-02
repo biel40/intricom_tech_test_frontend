@@ -20,13 +20,13 @@
                 }
             </tbody>
         </table>
-
-        <div class="add-new-client-button">
-            <button (click)="addClient()">Añadir nuevo cliente</button>
-        </div>
     } @else {
         <p>No se han encontrado clientes.</p>
     }
+
+    <div class="add-new-client-button">
+        <button (click)="addClient()">Añadir nuevo cliente</button>
+    </div>
 </div>
 
 <router-outlet></router-outlet>

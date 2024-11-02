@@ -18,13 +18,13 @@
                 }
             </tbody>
         </table>
-
-        <div class="add-new-client-button">
-            <button (click)="addNewHotel()">Añadir nuevo hotel</button>
-        </div>
     } @else {
         <p>No se han encontrado hoteles disponibles.</p>
     }
+  
+    <div class="add-new-client-button">
+        <button (click)="addNewHotel()">Añadir nuevo hotel</button>
+    </div>
 </div>
 
 <router-outlet></router-outlet>
