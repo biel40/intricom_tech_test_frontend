@@ -1,0 +1,30 @@
+<div style="padding-left: 10em; padding-top: 2em;">
+    @if (isCreating) {
+        <h1>Formulario de añadir nuevo cliente</h1>
+    } @else {
+        <h1>Formulario de editar cliente</h1>
+    }
+    
+
+    <form (ngSubmit)="onSubmit()" #clientForm="ngForm">
+        <div>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="client.name" required>
+        </div>
+
+        <div>
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" [(ngModel)]="client.address" required>
+        </div>
+
+        <div>
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone" [(ngModel)]="client.phone" required>
+        </div>
+
+        <div>
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="onCancel()">Cancelar</button>
+        </div>
+    </form>
+</div>

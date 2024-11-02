@@ -1,0 +1,25 @@
+<div style="padding-left: 10em; padding-top: 2em;">
+    @if (isCreating) {
+        <h1>Formulario de añadir nuevo hotel</h1>
+    } @else {
+        <h1>Formulario de editar hotel</h1>
+    }
+    
+
+    <form (ngSubmit)="onSubmit()" #hotelForm="ngForm">
+        <div>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="hotel.name" required>
+        </div>
+
+        <div>
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" [(ngModel)]="hotel.address" required>
+        </div>
+
+        <div>
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="onCancel()">Cancelar</button>
+        </div>
+    </form>
+</div>

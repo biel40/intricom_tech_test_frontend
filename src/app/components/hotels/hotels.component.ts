@@ -3,10 +3,14 @@ import { Component, inject } from '@angular/core';
 import { Hotel } from '../../../open-api/models';
 import { HotelsService } from '../../../open-api/services';
 import { firstValueFrom } from 'rxjs';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-Hotels',
   standalone: true,
+  imports: [
+    RouterOutlet
+  ],
   templateUrl: './hotels.component.html',
   styleUrl: './hotels.component.scss'
 })
@@ -17,7 +21,8 @@ export class HotelsComponent {
   public hotels: Hotel[] = [];
 
   constructor(
-    private _httpClient: HttpClient
+    private _httpClient: HttpClient,
+    private _router: Router
   ) {
 
   }
@@ -34,6 +39,9 @@ export class HotelsComponent {
     } catch (error) {
       console.error('Error loading Hotels data ' + error);
     }
+  }
 
+  public addNewHotel() {
+    this._router.navigate(['/hotels/new']);
   }
 }

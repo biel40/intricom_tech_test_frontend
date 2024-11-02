@@ -3,13 +3,14 @@ import { ClientsService } from '../../../open-api/services';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Client } from '../../../open-api/models';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
   standalone: true,
   templateUrl: './clients.component.html',
   imports: [
-
+    RouterOutlet
   ],
   providers: [
 
@@ -23,13 +24,18 @@ export class ClientsComponent {
     public clients: Client[] = [];
 
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private _router: Router
     ) {
 
     }
 
     ngOnInit() {
         this._loadData();
+
+        this._router.events.subscribe(() => {
+            this._loadData();
+        });
     }
 
     private async _loadData() {
@@ -40,6 +46,17 @@ export class ClientsComponent {
         } catch(error) {
             console.error('Error loading clients data ' + error);
         }
-        
+    }
+
+    public async addClient() : Promise<void> {
+        this._router.navigate(['/clients/new']);
+    }
+
+    public async editClient(id: string) : Promise<void> {
+        this._router.navigate(['/clients/edit/' + id]);
+    }
+
+    onDestroy() {
+        console.log('Clients component destroyed');
     }
 }
