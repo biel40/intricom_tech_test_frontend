@@ -29,11 +29,8 @@ export class BookingsComponent {
   private async _loadData() {
     try {
       this.bookings = await firstValueFrom(this._hotelBookingService.hotelBookingControllerGetAllBookings());
-
-      console.log('Bookings hotels data loaded:', this.bookings);
     } catch (error) {
       console.error('Error loading bookings data ' + error);
     }
   }
-
 }

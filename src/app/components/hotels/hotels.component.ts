@@ -34,8 +34,6 @@ export class HotelsComponent {
   private async _loadData() {
     try {
       this.hotels = await firstValueFrom(this._hotelService.hotelControllerGetAllHotels());
-
-      console.log('Hotels data loaded succesfully:', this.hotels);
     } catch (error) {
       console.error('Error loading Hotels data ' + error);
     }
