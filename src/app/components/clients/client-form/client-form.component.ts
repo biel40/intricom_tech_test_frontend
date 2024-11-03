@@ -62,15 +62,9 @@ export class ClientFormComponent {
                     }
                 }));
 
-                console.log('Response from API:', responseFromApi);
-
                 alert('Cliente nuevo añadido con éxito!');
 
                 this._router.navigate(['/clients']);
-
-                // We force a reload of the clients data list
-                
-
             } else {
                 // Update existing client...
             }

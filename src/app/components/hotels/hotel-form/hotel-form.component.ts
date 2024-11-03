@@ -63,19 +63,17 @@ export class HotelFormComponent {
                 console.log('Response from API:', responseFromApi);
 
                 alert('Hotel nuevo añadido con éxito!');
-
-                this._router.navigate(['/hotel']);
             } else {
                 // Update existing client...
             }
 
-            this._router.navigate(['/hotel']);
+            this._router.navigate(['/hotels']);
         } catch (error) {
             console.error('Error saving hotel data ' + error);
         }
     }
 
     public async onCancel() : Promise<void> {
-        this._router.navigate(['/hotel']);
+        this._router.navigate(['/hotels']);
     }
 }
