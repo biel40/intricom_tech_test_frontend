@@ -60,8 +60,6 @@ export class HotelFormComponent {
                     }
                 }));
 
-                console.log('Response from API:', responseFromApi);
-
                 alert('Hotel nuevo añadido con éxito!');
             } else {
                 // Update existing client...
